@@ -17,19 +17,19 @@ With this release we have moved from upip to mip for installing dependencies.  T
 
 ```py
 # If your device needs wifi before running uncomment and adapt the code below as necessary
-# import network
-# wlan = network.WLAN(network.STA_IF)
-# wlan.active(True)
-# wlan.connect("SSID","password")
-# while not wlan.isconnected():
-#     pass
-# print(wlan.isconnected())
+#import network
+#wlan = network.WLAN(network.STA_IF)
+#wlan.active(True)
+#wlan.connect("SSID","password")
+#while not wlan.isconnected():
+#    pass
+#print(wlan.isconnected())
 
 try:
     import iotc
 except:
     import mip
-    mip.install('github:jcaldeira77-org/iot-central-micropython-client/package.json')
+    mip.install('github:jcaldeira-iot/iot-central-micropython-client/package.json')
     import iotc
 ```
 
