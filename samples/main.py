@@ -9,7 +9,7 @@ wlan.active(True)
 wlan.connect("SSID", "password")
 while not wlan.isconnected():
     pass
-print(wlan.isconnected())
+print('Network config:', wlan.ipconfig('addr4'))
 
 try:
     import iotc
