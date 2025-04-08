@@ -147,7 +147,7 @@ class ProvisioningClient():
             response._cached = response.raw.read(1)
             while True:
                 response._cached += response.raw.read(1)
-                if response._cached[-2] == 125 and response._cached[-1] == 125: # 125 -> ASCI code for }  |   Waiting for the end of json msg -> }}
+                if response._cached[-2] == 125 and response._cached[-1] == 125: # 125 -> ASCI code for }  |   Waiting for the end of the json msg -> }}
                     break
             #####################################################
             self._logger.debug('Assigned. {}'.format(response.text))
