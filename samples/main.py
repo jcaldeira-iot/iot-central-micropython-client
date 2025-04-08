@@ -23,7 +23,7 @@ from iotc import IoTCClient, IoTCConnectType, IoTCLogLevel, IoTCEvents
 scope_id = 'scope-id'
 device_id = 'device-id'
 key = 'device or symmetric key'
-conn_type = IoTCConnectType.DEVICE_KEY
+conn_type = IoTCConnectType.DEVICE_KEY#SYMM_KEY
 
 client = IoTCClient(scope_id, device_id, conn_type, key)
 client.set_log_level(IoTCLogLevel.ALL)
