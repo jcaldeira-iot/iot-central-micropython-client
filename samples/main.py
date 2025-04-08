@@ -6,7 +6,7 @@ from random import randint
 import network
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
-wlan.connect("SSID","password")
+wlan.connect("SSID", "password")
 while not wlan.isconnected():
     pass
 print(wlan.isconnected())
@@ -18,14 +18,14 @@ except:
     mip.install('github:jcaldeira-iot/iot-central-micropython-client/package.json')
     import iotc
     
-from iotc import IoTCClient,IoTCConnectType,IoTCLogLevel,IoTCEvents
+from iotc import IoTCClient, IoTCConnectType, IoTCLogLevel, IoTCEvents
 
-scope_id='scope-id'
-device_id='device-id'
-key='device or symmetric key'
-conn_type=IoTCConnectType.DEVICE_KEY
+scope_id = 'scope-id'
+device_id = 'device-id'
+key = 'device or symmetric key'
+conn_type = IoTCConnectType.DEVICE_KEY
 
-client=IoTCClient(scope_id,device_id,conn_type,key)
+client = IoTCClient(scope_id, device_id, conn_type, key)
 client.set_log_level(IoTCLogLevel.ALL)
 
 def on_properties(name, value):
@@ -49,6 +49,7 @@ client.send_property({'readOnlyProp':40})
 
 while client.is_connected():
     client.listen()
-    print('Sending telemetry')
-    client.send_telemetry({'temperature':randint(0,20),'pressure':randint(0,20),'acceleration':{'x':randint(0,20),'y':randint(0,20)}})
+    json_msg = {'temperature':randint(0,20),'pressure':randint(0,20),'acceleration':{'x':randint(0,20),'y':randint(0,20)}}
+    print('Sending telemetry:', json_msg)
+    client.send_telemetry(json_msg)
     sleep(2)
