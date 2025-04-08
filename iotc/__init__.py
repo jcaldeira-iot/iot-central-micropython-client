@@ -9,7 +9,7 @@ try:
     from umqtt.robust import MQTTClient
 except:
     import mip
-    mip.install('github:jcaldeira77-org/iot-central-micropython-client/package.json')
+    mip.install('github:jcaldeira-iot/iot-central-micropython-client/package.json')
     from umqtt.robust import MQTTClient
 
 gc.collect()
