@@ -113,7 +113,7 @@ class ProvisioningClient():
         self._logger.debug('Registering...')
         body = {'registrationId': self._registration_id}
         try:
-            body['data'] = {'iotcModelId': self._model_id}
+            body['payload'] = {'iotcModelId': self._model_id}
         except:
             pass
 
@@ -141,6 +141,15 @@ class ProvisioningClient():
             sleep(3)
             return self._loop_assignment(operation_id)
         elif response.status_code == 200:
+            #####################################################
+            # The final character of the response is corrupting the processing of its content,
+            # so each character is processoed until the end of json message occurs -> }}
+            response._cached = response.raw.read(1)
+            while True:
+                response._cached += response.raw.read(1)
+                if response._cached[-2] == 125 and response._cached[-1] == 125: # 125 -> ASCI code for }  |   Waiting for the end of json msg -> }}
+                    break
+            #####################################################
             self._logger.debug('Assigned. {}'.format(response.text))
             assigned_hub = json.loads(response.text)[
                 'registrationState']['assignedHub']
