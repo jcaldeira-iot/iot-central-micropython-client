@@ -29,7 +29,7 @@ try:
     import iotc
 except:
     import mip
-    mip.install('github:Azure/iot-central-micropython-client/package.json')
+    mip.install('github:jcaldeira77-org/iot-central-micropython-client/package.json')
     import iotc
 ```
 
