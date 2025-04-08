@@ -54,7 +54,7 @@ from iotc import IoTCConnectType, IoTCClient
 id_scope = 'scopeID'
 device_id = 'device_id'
 sasKey = 'masterKey' # or use device key directly
-conn_type=IoTCConnectType.SYMM_KEY # or use DEVICE_KEY if working with device keys
+conn_type = IoTCConnectType.SYMM_KEY # or use DEVICE_KEY if working with device keys
 client = IoTCClient(id_scope, device_id, conn_type, sasKey)
 ```
 
@@ -80,7 +80,7 @@ After successfull connection, IOTC context is available for further commands.
 ### Send telemetry
 
 ```py
-client.send_telemetry(payload,properties=None)
+client.send_telemetry(payload, properties=None)
 ```
 
 e.g. Send telemetry every 3 seconds
@@ -127,7 +127,7 @@ property value if has been successfully applied or nothing.
 e.g.
 ```py
 def on_props(prop_name, prop_value):
-    if prop_value>10:
+    if prop_value > 10:
         # process property
         return prop_value
 
