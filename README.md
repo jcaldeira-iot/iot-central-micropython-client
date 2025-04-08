@@ -50,7 +50,7 @@ You can use both device keys or group keys.
 
 ### Init
 ```py
-from iotc import IoTCConnectType
+from iotc import IoTCConnectType, IoTCClient
 id_scope = 'scopeID'
 device_id = 'device_id'
 sasKey = 'masterKey' # or use device key directly
@@ -63,7 +63,7 @@ You can pass a logger instance to have your custom log implementation. (see [#Lo
 e.g.
 
 ```py
-from iotc import ConsoleLogger,IoTCLogLevel
+from iotc import ConsoleLogger, IoTCLogLevel, IoTCClient
 logger = ConsoleLogger(IoTCLogLevel.ALL)
 client = IoTCClient(id_scope, device_id, conn_type, sasKey, logger)
 ```
@@ -86,8 +86,9 @@ client.send_telemetry(payload,properties=None)
 e.g. Send telemetry every 3 seconds
 ```py
 while client.is_connected():
-    print('Sending telemetry')
-    client.send_telemetry({'temperature':randint(0,20),'pressure':randint(0,20),'acceleration':{'x':randint(0,20),'y':randint(0,20)}})
+    json_msg = {'temperature':randint(0,20),'pressure':randint(0,20),'acceleration':{'x':randint(0,20),'y':randint(0,20)}}
+    print('Sending telemetry:', json_msg)
+    client.send_telemetry(json_msg)
     sleep(3)
 ```
 An optional *properties* object can be included in the send methods, to specify additional properties for the message (e.g. timestamp,etc... ).
