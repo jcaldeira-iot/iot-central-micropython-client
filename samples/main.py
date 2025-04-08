@@ -3,19 +3,19 @@ from utime import sleep
 from random import randint
 
 # If your device needs wifi before running uncomment and adapt the code below as necessary
-# import network
-# wlan = network.WLAN(network.STA_IF)
-# wlan.active(True)
-# wlan.connect("SSID","password")
-# while not wlan.isconnected():
-#     pass
-# print(wlan.isconnected())
+import network
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+wlan.connect("SSID","password")
+while not wlan.isconnected():
+    pass
+print(wlan.isconnected())
 
 try:
     import iotc
 except:
     import mip
-    mip.install('github:Azure/iot-central-micropython-client/package.json')
+    mip.install('github:jcaldeira77-org/iot-central-micropython-client/package.json')
     import iotc
     
 from iotc import IoTCClient,IoTCConnectType,IoTCLogLevel,IoTCEvents
