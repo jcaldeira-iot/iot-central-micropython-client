@@ -5,9 +5,5 @@
     ["iotc/constants.py", "github:jcaldeira-iot/iot-central-micropython-client/iotc/constants.py"],
     ["iotc/__init__.py", "github:jcaldeira-iot/iot-central-micropython-client/iotc/__init__.py"]
   ],
-  "deps": [
-    ["umqtt.simple", "latest"],
-    ["umqtt.robust", "latest"]
-  ],
   "version": "1.0"
 }
